@@ -35,7 +35,7 @@
           <div class="flex items-center justify-between ">
             <img class="q-mr-xs" src="~assets/header-phone-icon.png" alt="">
             <p class="no-margin ">
-              <a class="text-weight-semi-bold text-grey-8 font-size-18 text-no-decoration" href="tel:+375292343223">+375(29)234-32-23</a>
+              <a class="text-weight-semi-bold text-grey-8 font-size-18 text-no-decoration" href="tel:+375336955695">+375 33 695-56-95</a>
             </p>
           </div>
           <q-space/>
@@ -254,7 +254,11 @@
                   dense size="sm"
                   class="col-lg-6 col-md-6 col-sm-6 col-xs-12 font-size-16 text-weight-semi-bold text-grey-8"
                   :val="size.id"
-                  :label="size.name " />
+                  :label="size.name " >
+                  <q-tooltip v-if="check_ost(item.id,size.id)" anchor="center left" self="center right" :offset="[10, 10]">
+                    Нет в наличии
+                  </q-tooltip>
+                </q-radio>
               </div>
             </q-card-section>
             <q-card-section class="q-pt-none">
@@ -272,6 +276,9 @@
             </q-card-actions>
           </q-card>
 
+        </div>
+        <div class="catalog-btn text-center">
+          <q-btn v-if="total_pages && total_pages>current_page" :loading="is_loading" @click="getItems(current_slug,true)" unelevated rounded color="primary" class="q-px-lg"  size="lg" label="Посмотреть еще"/>
         </div>
       </div>
     </section>
@@ -295,7 +302,7 @@
             </p>
             <q-btn @click="scrollToElement($refs.catalog)" v-if="$q.screen.gt.xs" class="q-px-lg text-weight-semi-bold "   unelevated rounded color="primary" size="lg" label="В каталог" />
           </div>
-          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-0 text-center">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-0 flex column items-center justify-between">
             <img src="../assets/pillow.jpg" alt="">
             <q-btn @click="scrollToElement($refs.catalog)" v-if="!$q.screen.gt.xs" class="q-px-lg text-weight-semi-bold "   unelevated rounded color="primary" size="lg" label="В каталог" />
           </div>
@@ -327,29 +334,15 @@
           </CD>
         </q-no-ssr>
       </div>
-
     </section>
     <section ref="feedbacks" class="feedbacks">
       <div class="container">
         <h3 class="text-h4 text-weight-bold q-mb-md" >Отзывы</h3>
         <q-no-ssr>
           <swiper  ref="recommendedSlider"  class="feedbacks-slider" :options="sliderOption">
-
-            <swiper-slide>
-              <img style="max-width: 100%; height: auto" src="../assets/fb.jpg" alt="">
+            <swiper-slide v-for="fb in currentCat.feedbacks" :key="fb.id">
+              <img style="max-width: 100%; height: auto" :src="fb.image" alt="">
             </swiper-slide>
-            <swiper-slide>
-              <img style="max-width: 100%; height: auto" src="../assets/fb.jpg" alt="">
-            </swiper-slide>
-            <swiper-slide>
-              <img style="max-width: 100%; height: auto" src="../assets/fb.jpg" alt="">
-            </swiper-slide>
-            <swiper-slide>
-              <img style="max-width: 100%; height: auto" src="../assets/fb.jpg" alt="">
-            </swiper-slide>
-
-
-
             <div class="swiper-button-prev" slot="button-prev"></div>
             <div class="swiper-button-next" slot="button-next"></div>
           </swiper>
@@ -427,8 +420,8 @@
       <div class="map-inner">
         <h3 class="text-h4 text-weight-bold q-mb-xl">Свяжитесь с нами!</h3>
 
-        <p class="text-weight-semi-bold font-size-25 flex items-center"><img class="q-mr-md" src="../assets/header-phone-icon.png" alt=""><a class="text-primary text-no-decoration" href="tel:+375292343223">+375(29)234-32-23</a></p>
-        <p class="text-weight-semi-bold font-size-25 text-primary flex items-center"><img class="q-mr-md" src="../assets/bi_geo-alt.png" alt=""><span >г.Минск ул. Карла Маркса</span></p>
+        <p class="text-weight-semi-bold font-size-25 flex items-center"><img class="q-mr-md" src="../assets/header-phone-icon.png" alt=""><a class="text-primary text-no-decoration" href="tel:+375336955695">+375 33 695-56-95</a></p>
+        <p class="text-weight-semi-bold font-size-25 text-primary flex items-center"><img class="q-mr-md" src="../assets/bi_geo-alt.png" alt=""><span >Тарасово, ул Рабочая д 2</span></p>
         <div class="q-gutter-md">
           <a href="https://wa.me/+375336955695" target="_blank"><img src="../assets/header-w-logo.png" alt=""></a>
           <a href="https://telegram.im/@sweetdreemm" target="_blank"><img src="../assets/header-t-logo.png" alt=""></a>
@@ -453,9 +446,9 @@
             </div>
             <q-separator spaced="md"/>
             <div class="flex items-center justify-between">
-              <p class="text-weight-semi-bold font-size-16 flex items-center"><img class="q-mr-md" src="../assets/header-phone-icon.png" alt=""><a class="text-grey-9 text-no-decoration" href="tel:+375292343223">+375(29)234-32-23</a></p>
-              <p class="text-weight-semi-bold font-size-16 flex items-center"><img class="q-mr-md" src="../assets/mail-icon.png" alt=""><a class="text-grey-9 text-no-decoration" href="mailto:sweetdreams@mail.ru">sweetdreams@mail.ru</a></p>
-              <p class="text-weight-semi-bold font-size-16 flex items-center">Время работы: Пн-Вс 9.00-21.00 </p>
+              <p class="text-weight-semi-bold font-size-16 flex items-center"><img class="q-mr-md" src="../assets/header-phone-icon.png" alt=""><a class="text-grey-9 text-no-decoration" href="tel:+375336955695">+375 33 695-56-95</a></p>
+              <p class="text-weight-semi-bold font-size-16 flex items-center"><img class="q-mr-md" src="../assets/mail-icon.png" alt=""><a class="text-grey-9 text-no-decoration" href="mailto:ToYou.work@yandex.by">ToYou.work@yandex.by</a></p>
+              <p class="text-weight-semi-bold font-size-16 flex items-center">Время работы с 9:30 до 21:30</p>
 
 
             </div>
@@ -488,9 +481,9 @@
             <p class="font-size-10 q-mb-sm"><a class="text-grey-6" href="">Политика конфиденциальности</a></p>
           </div>
           <div class="col-7">
-            <p class="text-weight-semi-bold font-size-16 flex items-center"><img style="width: 11px; height: 11px; object-fit: contain" class="q-mr-xs" src="../assets/header-phone-icon.png" alt=""><a class="text-grey-9 font-size-12 text-no-decoration" href="tel:+375292343223">+375(29)234-32-23</a></p>
-            <p class="text-weight-semi-bold font-size-16 flex items-center"><img style="width: 11px; height: 11px; object-fit: contain" class="q-mr-xs" src="../assets/mail-icon.png" alt=""><a class="text-grey-9 font-size-12 text-no-decoration" href="mailto:sweetdreams@mail.ru">sweetdreams@mail.ru</a></p>
-            <p class="text-weight-semi-bold font-size-10 flex items-center"><img style="width: 11px; height: 11px; object-fit: contain" class="q-mr-xs" src="../assets/time-icon.png" alt="">Время работы: Пн-Вс 9.00-21.00 </p>
+            <p class="text-weight-semi-bold font-size-16 flex items-center"><img style="width: 11px; height: 11px; object-fit: contain" class="q-mr-xs" src="../assets/header-phone-icon.png" alt=""><a class="text-grey-9 font-size-12 text-no-decoration" href="tel:+375336955695">+375 33 695-56-95</a></p>
+            <p class="text-weight-semi-bold font-size-16 flex items-center"><img style="width: 11px; height: 11px; object-fit: contain" class="q-mr-xs" src="../assets/mail-icon.png" alt=""><a class="text-grey-9 font-size-12 text-no-decoration" href="mailto:ToYou.work@yandex.by">ToYou.work@yandex.by</a></p>
+            <p class="text-weight-semi-bold font-size-10 flex items-center"><img style="width: 11px; height: 11px; object-fit: contain" class="q-mr-xs" src="../assets/time-icon.png" alt="">Время работы с 9:30 до 21:30</p>
             <div class="">
               <a href="https://wa.me/+375336955695" target="_blank"><img src="../assets/header-w-logo.png" alt=""></a>
               <a href="https://telegram.im/@sweetdreemm" target="_blank"><img src="../assets/header-t-logo.png" alt=""></a>
@@ -584,7 +577,11 @@
                          class="full-width"
                          rounded
                          unelevated
-                         color="primary"/>
+                         color="primary">
+                    <q-tooltip v-if="check_ost(openedItem.id,size.id)" anchor="center left" self="center right" :offset="[10, 10]">
+                    Нет в наличии
+                  </q-tooltip>
+                  </q-btn>
 
                 </div>
 
@@ -602,7 +599,8 @@
                          :outline="selectedType!==index"
                          rounded
                          unelevated
-                         color="primary"/>
+                         color="primary">
+                  </q-btn>
 
                 </div>
                 <div class="itemCard__info">
@@ -747,6 +745,9 @@ export default {
       quiz:false,
       shape:'',
       name:null,
+      total_pages:null,
+      current_page:1,
+      current_slug:'',
       is_loading:false,
       promocode:null,
       openedItem:{ "id": 1,"selected_size":1, "size": [ { "id": 1, "sostav": "<p>1 простыня 150x220;<br />\r\n1 пододеяльник 150x220;<br />\r\n2 наволочки 70x70;)</p>", "name": "1.5 спальное", "price": 100, "is_selected": false }, { "id": 2, "sostav": "<p>1 простыня 180x220;<br />\r\n1 пододеяльник 180x220;<br />\r\n2 наволочки 70x70</p>", "name": "2 спальное", "price": 200, "is_selected": false }, { "id": 3, "sostav": "<p>1 простыня 220x240;<br />\r\n1 пододеяльник 200x220; 2 наволочки 70x70;<br />\r\n2 наволочки 50x70</p>", "name": "Евро", "price": 300, "is_selected": false }, { "id": 4, "sostav": "<p>1 простыня 220x240;<br />\r\n2 пододеяльника;<br />\r\n2 наволочки 70x70;<br />\r\n2 наволочки 50x70</p>", "name": "Семейное", "price": 400, "is_selected": false } ], "image": "", "sostav": "хлопок 100%", "country": "Турция", "name": "Товар1 красный", "article": "т1", "is_active": true, "is_present": true, "created_at": "2021-04-23T15:53:29.161435+03:00", "category": 1 },
@@ -848,10 +849,12 @@ export default {
     console.log(cat_slug)
     if (cat_slug !== undefined){
       this.currentCat = this.cats.find(x=>x.name_slug === cat_slug)
-      this.getItems(this.$route.params.cat_slug)
+      this.current_slug = this.$route.params.cat_slug
+      this.getItems(this.current_slug,false)
     }else{
       this.currentCat = this.cats[0]
-      this.getItems(this.cats[0].name_slug)
+      this.current_slug = this.cats[0].name_slug
+      this.getItems(this.current_slug,false)
     }
   },
   methods:{
@@ -887,14 +890,34 @@ export default {
     },
     changePage(name_slug){
       console.log(name_slug)
-      //this.$router.push(`/${name_slug}`)
       window.location.href = `/${name_slug}`
     },
-    async getItems(slug){
-      const response_items = await this.$api.get(`/api/get_items?cat_slug=${slug}`)
+    async getItems(slug,next_page){
+
+      if (!next_page){
+       const response_items = await this.$api.get(`/api/get_items?cat_slug=${slug}`)
       this.items = response_items.data.results
+      this.total_pages = response_items.data.page_count
       const response_ost = await this.$api.get(`/api/get_ost?cat_slug=${slug}`)
       this.ostatki = response_ost.data
+      }else{
+        this.is_loading = true
+          if (!this.current_page+1 > this.total_pages){
+            this.current_page+=1
+          }
+          else {
+            this.current_page = this.total_pages
+          }
+         const response_items = await this.$api.get(`/api/get_items?cat_slug=${slug}&page=${this.current_page}`)
+
+        for (let i of  response_items.data.results){
+          this.items.push(i)
+        }
+
+
+        this.is_loading = false
+      }
+
     },
     async changeItem(item_id,size_id,action){
       const response= await this.$api.post(`/api/${action}`,
