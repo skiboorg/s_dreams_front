@@ -51,7 +51,7 @@
                 <q-badge rounded color="accent" class="text-weight-bold" floating>{{cart_items_count}}</q-badge>
               </q-btn>
               <div @click="cart=!cart" style="line-height: 15px" class="flex column items-end justify-center cursor-pointer">
-                <p class="q-mb-xs text-weight-bold" >{{cart_total_price}} BYN</p>
+                <p class="q-mb-xs text-weight-bold font-size-14" >{{cart_total_price.toFixed(2)}} BYN</p>
                 <p class="no-margin text-weight-semi-bold text-primary font-size-16"> Корзина <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5.48572 5.48553L5.48571 5.48553L2.03116 8.93998C1.77238 9.19889 1.35275 9.19893 1.09404 8.93999C0.835323 8.68128 0.835318 8.26169 1.09404 8.00299L4.08008 5.01703L1.09413 2.03118L1.09411 2.03116C0.835427 1.77237 0.835402 1.35284 1.09411 1.09412L5.48572 5.48553ZM5.48572 5.48553C5.61503 5.3562 5.67978 5.18647 5.67978 5.01701C5.67978 4.84765 5.61515 4.67802 5.48582 4.54863L5.4858 4.54862M5.48572 5.48553L5.4858 4.54862M5.4858 4.54862L2.03124 1.0941M5.4858 4.54862L2.03124 1.0941M2.03124 1.0941C1.77244 0.835312 1.35285 0.835286 1.09413 1.0941L2.03124 1.0941Z" fill="#5D9AE6" stroke="#5D9AE6" stroke-width="0.2"/>
                 </svg>
@@ -522,7 +522,7 @@
                     <p class="q-mb-none " :class="$q.screen.gt.xs ? 'q-px-md' : 'q-px-xs'">{{item.quantity}}</p>
                     <q-btn size="sm" @click="changeItem(item.item.id,item.size.id,'plus_quantity')" icon="add" color="primary" dense outline round/>
                   </div>
-                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12  text-center q-mb-none"><span v-if="!$q.screen.gt.xs" class="inline-block q-mr-sm">Итого:</span>{{item.price}} BYN</div>
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12  text-center q-mb-none"><span v-if="!$q.screen.gt.xs" class="inline-block q-mr-sm">Итого:</span>{{item.price.toFixed(2)}} BYN</div>
                   <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cart-item__delete">
                     <q-btn dense icon="delete"  @click="changeItem(item.item.id,item.size.id,'delete_item')" flat round/>
                   </div>
@@ -547,8 +547,6 @@
             </div>
           </q-form>
         </q-card-section>
-
-
       </q-card>
     </q-dialog>
     <q-dialog v-model="itemCard" >
@@ -891,10 +889,20 @@ export default {
         }
       }
       const response_items = await this.$api.post(`/api/send_mail`,{type:type, data:data})
-      this.is_loading = false
+
       if (type === 'order'){
         await this.fetchCart()
+        this.$q.notify({
+          message: 'Ваш заказ успешно оформлен',
+          color: 'positive',
+          position:'top-right',
+
+        })
+        const response_ost = await this.$api.get(`/api/get_ost?cat_slug=${this.currentCat.name_slug}`)
+        this.ostatki = response_ost.data
+        this.cart = false
       }
+      this.is_loading = false
     },
     changePage(name_slug){
       console.log(name_slug)
@@ -946,6 +954,14 @@ export default {
         })
       console.log(response.data)
       await this.fetchCart()
+      this.$q.notify({
+        message: 'Товар добавлен в корзину',
+        color: 'positive',
+        position:'top-right',
+        actions: [
+          { label: 'Корзина', color: 'white', handler: () => { this.cart = true } }
+        ]
+      })
     },
     showItem(index){
       this.openedItem = this.items[index]
