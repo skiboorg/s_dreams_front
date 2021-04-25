@@ -28,7 +28,7 @@
                 </q-item>
               </q-list>
             </q-btn-dropdown>
-            <q-tab name="alarms" @click="scrollToElement($refs.faq)" label="Частные вопрос" />
+            <q-tab name="alarms" @click="scrollToElement($refs.faq)" label="Частые вопросы" />
             <q-tab name="fb" @click="scrollToElement($refs.feedbacks)" label="Отзывы" />
           </q-tabs>
           <div class="flex items-center justify-between ">
@@ -83,13 +83,13 @@
                 </q-item>
                 <q-separator/>
                 <q-item clickable @click="scrollToElement($refs.faq)">
-                  <p @click="scrollToElement($refs.faq)" class="font-size-16  cursor-pointer">Частные вопрос</p>
+                  <p @click="scrollToElement($refs.faq)" class="font-size-16  cursor-pointer">Частые вопросы</p>
                 </q-item>
                 <q-item clickable @click="scrollToElement($refs.feedbacks)">
                   <p @click="scrollToElement($refs.feedbacks)" class="font-size-16  cursor-pointer">Отзывы</p>
                 </q-item>
                 <q-item clickable @click="scrollToElement($refs.certs)">
-                  <p  class="font-size-16  cursor-pointer">Сертификация</p>
+                  <p  class="font-size-16  cursor-pointer">Сертификаты</p>
                 </q-item>
               </q-list>
             </q-menu>
@@ -442,9 +442,9 @@
             <div class="flex items-center justify-between">
               <p @click="scrollToElement($refs.features)" class="font-size-16 q-mb-none cursor-pointer">О продукте</p>
               <p @click="scrollToElement($refs.catalog)" class="font-size-16 q-mb-none cursor-pointer">Каталог</p>
-              <p @click="scrollToElement($refs.faq)" class="font-size-16 q-mb-none cursor-pointer">Частные вопрос</p>
+              <p @click="scrollToElement($refs.faq)" class="font-size-16 q-mb-none cursor-pointer">Частые вопросы</p>
               <p @click="scrollToElement($refs.feedbacks)" class="font-size-16 q-mb-none cursor-pointer">Отзывы</p>
-              <p @click="scrollToElement($refs.certs)" class="font-size-16 q-mb-none cursor-pointer">Сертификация</p>
+              <p @click="scrollToElement($refs.certs)" class="font-size-16 q-mb-none cursor-pointer">Сертификаты</p>
             </div>
             <q-separator spaced="md"/>
             <div class="flex items-center justify-between">
@@ -477,9 +477,9 @@
             <img src="../assets/f-logo.svg" alt="">
             <p @click="scrollToElement($refs.features)" class="font-size-10 q-mb-md cursor-pointer">О продукте</p>
             <p @click="scrollToElement($refs.catalog)" class="font-size-10 q-mb-md cursor-pointer">Каталог</p>
-            <p @click="scrollToElement($refs.faq)" class="font-size-10 q-mb-md cursor-pointer">Частные вопрос</p>
+            <p @click="scrollToElement($refs.faq)" class="font-size-10 q-mb-md cursor-pointer">Частые вопросы</p>
             <p @click="scrollToElement($refs.feedbacks)" class="font-size-10 q-mb-md cursor-pointer">Отзывы</p>
-            <p @click="scrollToElement($refs.certs)" class="font-size-10 q-mb-md cursor-pointer">Сертификация</p>
+            <p @click="scrollToElement($refs.certs)" class="font-size-10 q-mb-md cursor-pointer">Сертификаты</p>
             <p class="font-size-10 q-mb-sm"><a class="text-grey-6" href="">Политика конфиденциальности</a></p>
           </div>
           <div class="col-7">
