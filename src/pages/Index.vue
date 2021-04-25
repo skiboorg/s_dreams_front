@@ -21,10 +21,9 @@
             <q-tab name="mails" @click="scrollToElement($refs.features)"  label="О продукте" />
             <q-btn-dropdown class="text-grey-9" auto-close no-caps stretch flat label="Каталог">
               <q-list>
-                <q-item clickable v-for="cat in cats" :key="cat.id">
+                <q-item @click="changePage(cat.name_slug)" clickable v-for="cat in cats" :key="cat.id">
                   <q-item-section >
-                    <p @click="changePage(cat.name_slug)" class=" no-margin text-body2">{{cat.name}}</p>
-
+                    <p  class=" no-margin text-body2">{{cat.name}}</p>
                   </q-item-section>
                 </q-item>
               </q-list>
@@ -77,9 +76,9 @@
                   <p  class="font-size-16 no-margin cursor-pointer">Каталог</p>
                 </q-item>
                 <q-separator/>
-                <q-item  clickable v-for="cat in cats" :key="cat.id" >
+                <q-item @click="changePage(cat.name_slug)" clickable v-for="cat in cats" :key="cat.id" >
                   <q-item-section >
-                    <p @click="changePage(cat.name_slug)" class=" no-margin text-caption q-pl-sm">{{cat.name}}</p>
+                    <p  class=" no-margin text-caption q-pl-sm">{{cat.name}}</p>
                   </q-item-section>
                 </q-item>
                 <q-separator/>
