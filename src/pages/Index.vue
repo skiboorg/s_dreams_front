@@ -903,6 +903,7 @@ export default {
         const response_ost = await this.$api.get(`/api/get_ost?cat_slug=${this.currentCat.name_slug}`)
         this.ostatki = response_ost.data
         this.cart = false
+        this.$router.push('/thanks')
       }
       this.is_loading = false
     },
