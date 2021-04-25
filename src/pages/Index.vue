@@ -235,10 +235,10 @@
       </div>
     </section>
     <section ref="catalog" class="catalog">
-
       <div class="container">
+        {{total_pages}}
+        {{current_page}}
         <h3 class="text-h4 text-weight-bold text-center q-mb-md" >Каталог</h3>
-
         <div class="catalog-grid ">
           <q-card class="catalog-card" v-for="(item,index) in items" :key="item.id">
             <q-img :ratio="4/3"  :src="item.image" />
@@ -266,9 +266,14 @@
             <q-card-section class="q-pt-none">
               <p class="font-size-18  text-grey-8 q-mb-none">Состав: <span class="text-grey-5">{{item.sostav}}</span>   </p>
               <p class="font-size-18  text-grey-8 q-mb-md">Производство: <span class="text-grey-5">{{item.country}}</span>   </p>
-              <p class="text-grey-8 font-size-18 text-weight-semi-bold">Цена: <span class="text-primary text-weight-bold">
-                {{item.size.find(x=>x.id === item.selected_size).price}} BYN
-              </span></p>
+              <p class="text-grey-8 font-size-18 text-weight-semi-bold ">Цена:
+                <span style="text-decoration: line-through" v-if="item.size.find(x=>x.id === item.selected_size).discount>0"
+                      class=" text-weight-bold font-size-16 text-grey-5 inline-block q-mr-sm">{{item.size.find(x=>x.id === item.selected_size).old_price}} BYN</span>
+
+                <span class=" text-weight-bold  font-size-18 catalog-card__price"
+                :class="[item.size.find(x=>x.id === item.selected_size).discount>0 ? 'text-red' : 'text-primary']">
+                  {{item.size.find(x=>x.id === item.selected_size).price}} BYN</span>
+              </p>
             </q-card-section>
 
             <q-card-actions class="flex items-center justify-evenly q-pb-md">
@@ -917,12 +922,7 @@ export default {
         this.ostatki = response_ost.data
       }else{
         this.is_loading = true
-        if (!this.current_page+1 > this.total_pages){
-          this.current_page+=1
-        }
-        else {
-          this.current_page = this.total_pages
-        }
+        this.current_page+=1
         const response_items = await this.$api.get(`/api/get_items?cat_slug=${slug}&page=${this.current_page}`)
 
         for (let i of  response_items.data.results){
@@ -1397,6 +1397,8 @@ export default {
         width: 100%
         margin-left: 0 !important
         margin-bottom: 5px
+      &__price
+        font-size: 14px !important
 
     &-grid
       grid-template-columns: 1fr 1fr
