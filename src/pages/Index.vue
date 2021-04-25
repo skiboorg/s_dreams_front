@@ -244,7 +244,8 @@
           <q-card class="catalog-card" v-for="(item,index) in items" :key="item.id">
             <q-img :src="item.image" />
             <q-card-section>
-              <p class="col text-h6 text-weight-semi-bold ellipsis text-grey-10 q-mb-sm">{{item.name}}</p>
+              <p class="col text-h6 text-weight-semi-bold ellipsis text-grey-10 q-mb-none">{{item.name}}</p>
+              <p class="col text-caption text-weight-semi-bold ellipsis text-grey-6 q-mb-sm font-size-10">Артикул: {{item.article}}</p>
               <p class="font-size-18 text-weight-semi-bold text-grey-8 q-mb-sm">Размеры:</p>
 
               <div class="row ">
@@ -553,7 +554,7 @@
     <q-dialog v-model="itemCard" >
       <q-card class="itemCard" style="width: 1170px; max-width: 80vw;">
         <q-card-section class="row items-center q-pb-none">
-          <div class="text-h6 text-center">{{openedItem.name}}</div>
+          <div class="text-h6 text-center">{{openedItem.name}} ({{openedItem.article}})</div>
           <q-space />
           <q-btn icon="close" flat round dense v-close-popup />
         </q-card-section>
