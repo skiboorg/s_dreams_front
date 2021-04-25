@@ -236,8 +236,6 @@
     </section>
     <section ref="catalog" class="catalog">
       <div class="container">
-        {{total_pages}}
-        {{current_page}}
         <h3 class="text-h4 text-weight-bold text-center q-mb-md" >Каталог</h3>
         <div class="catalog-grid ">
           <q-card class="catalog-card" v-for="(item,index) in items" :key="item.id">
