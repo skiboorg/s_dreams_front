@@ -299,7 +299,7 @@
         <div class="row">
           <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 ">
             <p style="border-radius: 59px;" class="inline-block text-h4 text-white bg-accent q-px-lg q-py-sm text-weight-bold q-mb-xl warning-text">Остерегайтесь подделок!</p>
-            <p class="q-mb-xl font-size-25">Участились случаи подделок белья Alanna. Будьте аккуратны, так как некачественные подделки нередко
+            <p class="q-mb-xl font-size-25">Участились случаи подделок белья Candies. Будьте аккуратны, так как некачественные подделки нередко
               <span class="text-weight-semi-bold"> вызывают проблемы со здоровьем и провоцируют возникновение аллергии!</span>
             </p>
             <q-btn @click="scrollToElement($refs.catalog)" v-if="$q.screen.gt.xs" class="q-px-lg text-weight-semi-bold "   unelevated rounded color="primary" size="lg" label="В каталог" />
@@ -341,7 +341,7 @@
       <div class="container">
         <h3 class="text-h4 text-weight-bold q-mb-md" >Отзывы</h3>
         <q-no-ssr>
-          <swiper  ref="recommendedSlider"  class="feedbacks-slider" :options="sliderOption">
+          <swiper  ref="recommendedSlider"   :options="sliderOption">
             <swiper-slide v-for="fb in currentCat.feedbacks" :key="fb.id">
               <img style="max-width: 100%; height: auto" :src="fb.image" alt="">
             </swiper-slide>
@@ -539,7 +539,7 @@
                      mask="+375 (##) ###-##-##"
                      fill-mask=""
                      lazy-rules :rules="[val => !val.includes('_') || 'Введите корректный номер телефона']"/>
-            <q-input outlined v-model="promocode" class="full-width q-mb-md" label="Промокод"/>
+
             <div>
               <q-btn label="Заказать" type="submit" :loading="is_loading" rounded unelevated class="full-width" size="lg" color="primary"/>
 
@@ -581,8 +581,8 @@
                          unelevated
                          color="primary">
                     <q-tooltip v-if="check_ost(openedItem.id,size.id)" anchor="center left" self="center right" :offset="[10, 10]">
-                    Нет в наличии
-                  </q-tooltip>
+                      Нет в наличии
+                    </q-tooltip>
                   </q-btn>
 
                 </div>
@@ -800,23 +800,28 @@ export default {
       ],
       sliderOption: {
         spaceBetween: 10,
-        centeredSlides: true,
         loop:true,
+        centeredSlides: true,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
         },
         breakpoints: {
           320: {
+            centeredSlides: true,
             slidesPerView: 1,
             spaceBetween: 50
           },
           350: {
+            centeredSlides: true,
             slidesPerView: 1,
 
           },
           900: {
-            slidesPerView: 4,
+            centeredSlides: false,
+            spaceBetween: 20,
+
+            slidesPerView: 3,
           }
         }
       },
@@ -897,20 +902,20 @@ export default {
     async getItems(slug,next_page){
 
       if (!next_page){
-       const response_items = await this.$api.get(`/api/get_items?cat_slug=${slug}`)
-      this.items = response_items.data.results
-      this.total_pages = response_items.data.page_count
-      const response_ost = await this.$api.get(`/api/get_ost?cat_slug=${slug}`)
-      this.ostatki = response_ost.data
+        const response_items = await this.$api.get(`/api/get_items?cat_slug=${slug}`)
+        this.items = response_items.data.results
+        this.total_pages = response_items.data.page_count
+        const response_ost = await this.$api.get(`/api/get_ost?cat_slug=${slug}`)
+        this.ostatki = response_ost.data
       }else{
         this.is_loading = true
-          if (!this.current_page+1 > this.total_pages){
-            this.current_page+=1
-          }
-          else {
-            this.current_page = this.total_pages
-          }
-         const response_items = await this.$api.get(`/api/get_items?cat_slug=${slug}&page=${this.current_page}`)
+        if (!this.current_page+1 > this.total_pages){
+          this.current_page+=1
+        }
+        else {
+          this.current_page = this.total_pages
+        }
+        const response_items = await this.$api.get(`/api/get_items?cat_slug=${slug}&page=${this.current_page}`)
 
         for (let i of  response_items.data.results){
           this.items.push(i)
