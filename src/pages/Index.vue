@@ -67,8 +67,8 @@
             icon="menu"
             aria-label="Menu"
           >
-            <q-menu auto-close>
-              <q-list style="min-width: 100px">
+            <q-menu auto-close style="width: 300px">
+              <q-list style="min-width: 280px">
                 <q-separator />
                 <q-item clickable @click="scrollToElement($refs.features)">
                   <p  class="font-size-16  cursor-pointer">О продукте</p>
@@ -76,11 +76,13 @@
                 <q-item clickable @click="scrollToElement($refs.catalog)">
                   <p  class="font-size-16 no-margin cursor-pointer">Каталог</p>
                 </q-item>
-                <q-item clickable v-for="cat in cats" :key="cat.id" class="bg-grey-1">
+                <q-separator/>
+                <q-item  clickable v-for="cat in cats" :key="cat.id" >
                   <q-item-section >
-                    <p @click="changePage(cat.name_slug)" class=" no-margin text-body2">{{cat.name}}</p>
+                    <p @click="changePage(cat.name_slug)" class=" no-margin text-caption q-pl-sm">{{cat.name}}</p>
                   </q-item-section>
                 </q-item>
+                <q-separator/>
                 <q-item clickable @click="scrollToElement($refs.faq)">
                   <p @click="scrollToElement($refs.faq)" class="font-size-16  cursor-pointer">Частные вопрос</p>
                 </q-item>
@@ -820,18 +822,18 @@ export default {
       },
       sliderCertOption: {
         spaceBetween: 10,
-        loop:false,
+        loop:true,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
         },
         breakpoints: {
           320: {
-            slidesPerView: 1,
+            slidesPerView: 2,
             centeredSlides: true,
           },
           350: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             centeredSlides: true,
           },
           900: {
@@ -1305,7 +1307,7 @@ export default {
           content: none
   .why-we-postel-bg
     top: -110%
-    width: 100%
+    width: 80%
     background-image: url("../assets/why_we/why_we_postel-m.png")
 
 .features
