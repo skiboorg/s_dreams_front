@@ -241,7 +241,7 @@
 
         <div class="catalog-grid ">
           <q-card class="catalog-card" v-for="(item,index) in items" :key="item.id">
-            <q-img  :src="item.image" />
+            <q-img :ratio="4/3"  :src="item.image" />
             <q-card-section>
               <p class="col text-h6 text-weight-semi-bold ellipsis text-grey-10 q-mb-none">{{item.name}}</p>
               <p class="col text-caption text-weight-semi-bold ellipsis text-grey-6 q-mb-sm font-size-10">Артикул: {{item.article}}</p>
