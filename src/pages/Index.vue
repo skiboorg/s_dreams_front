@@ -98,7 +98,7 @@
       </div>
     </q-header>
     <!--    :class="pageInfo[currentIndex].offerClass"-->
-    <section class="offer " :style="{'background-image': 'url('+currentCat.offerImage+' )'}" >
+    <section class="offer " :style="{'background-image': 'url('+ offerBg +' )'}" >
 
       <div class="full-height container ">
         <div class="flex column items-start justify-center">
@@ -238,7 +238,7 @@
       <div class="container">
         <h3 class="text-h4 text-weight-bold text-center q-mb-md" >Каталог</h3>
         <div class="catalog-grid ">
-          <q-card class="catalog-card" v-for="(item,index) in items" :key="item.id">
+          <q-card v-if="check_ost_all(item)" class="catalog-card" v-for="(item,index) in items" :key="item.id">
             <q-img :ratio="4/3"  :src="item.image" />
             <q-card-section>
               <p class="col text-h6 text-weight-semi-bold ellipsis text-grey-10 q-mb-none">{{item.name}}</p>
@@ -741,6 +741,7 @@ export default {
   },
   data () {
     return {
+      has_ost: false,
       callBack: false,
       tab:'',
       cart:false,
@@ -800,7 +801,7 @@ export default {
         }
       ],
       sliderOption: {
-        spaceBetween: 10,
+        spaceBetween: 20,
         loop:true,
         centeredSlides: true,
         navigation: {
@@ -811,18 +812,18 @@ export default {
           320: {
             centeredSlides: true,
             slidesPerView: 1,
-            spaceBetween: 50
+            spaceBetween: 20
           },
           350: {
             centeredSlides: true,
             slidesPerView: 1,
-
+              spaceBetween: 20
           },
           900: {
             centeredSlides: false,
             spaceBetween: 20,
 
-            slidesPerView: 3,
+            slidesPerView: 5,
           }
         }
       },
@@ -891,7 +892,9 @@ export default {
         }
       }
       const response_items = await this.$api.post(`/api/send_mail`,{type:type, data:data})
-
+      if (type === 'quiz'){
+        this.$router.push('/thanks')
+      }
       if (type === 'order'){
         await this.fetchCart()
         this.$q.notify({
@@ -967,6 +970,21 @@ export default {
       this.selectedType = 0
       this.itemCard = true
     },
+    check_ost_all(item){
+      //console.log(item.size)
+      let has_ost
+      let ost
+      let ss
+       ss = this.ostatki.filter(x=>x.item===item.id)
+        for(let i of item.size) {
+          let ost = ss.find(x=>x.size === i.id)
+          if(ost){
+            console.log(ost.ostatok)
+          has_ost = ost.ostatok > 0
+          }
+        }
+      return has_ost
+    },
     check_ost(item_id,size_id){
       let item = this.ostatki.filter(x=>x.item===item_id)
       let size = item.find(x=>x.size === size_id)
@@ -991,6 +1009,9 @@ export default {
   },
   computed: {
     ...mapGetters('cart',['cart_items_count','cart_total_price','items_in_cart']),
+    offerBg(){
+      return this.$q.screen.gt.xs ?  this.currentCat.offerImage : this.currentCat.offerImageMobile
+    },
     currentIndex() {
       if (this.$route.path === '/'){
         return 0
