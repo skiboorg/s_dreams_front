@@ -335,7 +335,7 @@
         <p class="text-h4 text-weight-bold text-center  text-white" :class="$q.screen.gt.xs ? '' : 'q-mb-none'">Оставляй заявку!</p>
         <p class="text-h4 text-weight-bold text-center   text-white" :class="$q.screen.gt.xs ? 'q-mb-xl' : 'q-mb-sm'">До конца акции осталось:</p>
         <q-no-ssr>
-          <CD :time="18 * 24 * 60 * 60 * 1000" v-slot="{ days, hours, minutes, seconds }" class="flex items-start justify-start q-mb-lg">
+          <CD :time="currentCat.timerDays * 24 * 60 * 60 * 1000" v-slot="{ days, hours, minutes, seconds }" class="flex items-start justify-start q-mb-lg">
             <div class="text-center timer-item ">
               <p class="text-white text-h3 text-weight-semi-bold q-mb-none">{{ days }} </p>
               <p style="opacity: .6" class="font-size-12 text-white text-weight-bold ">Дней</p>
@@ -1058,7 +1058,7 @@ export default {
   position: relative
   background: url(../assets/promo-1-bg.png) no-repeat center
   height: 393px
-  margin-bottom: 170px
+  margin-bottom: 100px
   padding-top: 130px
 
   &__img1
@@ -1089,7 +1089,7 @@ export default {
 @media (max-width: 599px)
   .promo1
     padding-top: 45px
-    margin-bottom: 80px
+    margin-bottom: 30px
     h3
       font-size: 19px !important
       line-height: 25px
@@ -1510,7 +1510,7 @@ export default {
     background-image: url("../assets/why_we/why_we_postel-m.png")
 
 .features
-  margin-bottom: 60px
+  margin-bottom: 100px
   h3
     max-width: 915px
     margin: 0 auto 45px
@@ -1543,6 +1543,8 @@ export default {
       grid-gap: 15px
 .catalog
   margin-bottom: 50px
+  h3
+    margin-bottom: 50px
   &-card
     max-width: 360px
   &-grid
@@ -1555,6 +1557,8 @@ export default {
 
 @media (max-width: 599px)
   .catalog
+    h3
+      margin-bottom: 25px
     &-card
       max-width: unset
       & .q-card__section
