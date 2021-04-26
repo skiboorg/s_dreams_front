@@ -354,6 +354,22 @@
         </q-no-ssr>
       </div>
     </section>
+     <section v-if="currentCat.showPromoBlock" class="promo1">
+      <div class="container ">
+        <h3 class="text-h4 text-weight-bold q-mb-md" >При заказе 2-х комплектов  - Бесплатная доставка в подарок</h3>
+
+      </div>
+       <img class="promo1__img1" src="../assets/promo-1-img1.png" alt="">
+       <img class="promo1__img2" src="../assets/promo-1-img2.png" alt="">
+    </section>
+      <section v-if="currentCat.showPromoBlock" class="promo2">
+      <div class="container">
+        <h3 class="text-h4 text-weight-bold q-mb-md" >При заказе 3-х комплектов - Бесплатная доставка и маска для сна в подарок</h3>
+
+      </div>
+       <img class="promo2__img1" src="../assets/promo-2-img1.png" alt="">
+       <img class="promo2__img2" src="../assets/promo-2-img2.png" alt="">
+    </section>
     <section id="certs" ref="certs" class="certs">
       <div class="container">
         <h3 class="text-h4 text-weight-bold q-mb-md" >Сертификаты, подтверждающие качество, надежность и безопасность постельного белья Alanna</h3>
@@ -865,6 +881,22 @@ export default {
       this.current_slug = this.cats[0].name_slug
       this.getItems(this.current_slug,false)
     }
+
+    const script = document.createElement("script");
+    script.innerText= `
+ !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '280152506806059');
+  fbq('track', 'PageView');
+  fbq('track', 'ViewContent');
+    `;
+    document.body.appendChild(script);
   },
   methods:{
     ...mapActions('cart',['fetchCart']),
@@ -1021,6 +1053,135 @@ export default {
 }
 </script>
 <style lang="sass">
+.promo1
+  position: relative
+  background: url(../assets/promo-1-bg.png) no-repeat center
+  height: 393px
+  margin-bottom: 170px
+  padding-top: 130px
+
+  &__img1
+    position: absolute
+    right: 174px
+    bottom: 21px
+    z-index: 2
+  &__img2
+    position: absolute
+    right: 0
+    bottom: 0
+    z-index: 1
+  h3
+    position: relative
+    max-width: 700px
+    line-height: 53px
+    &::before
+      position: absolute
+      content: url(../assets/promo-1-gift.png)
+      right: 20px
+      bottom: -25px
+    &::after
+      position: absolute
+      content: url(../assets/promo-1-arrow.png)
+      right: -115px
+      top: -35px
+
+@media (max-width: 599px)
+  .promo1
+    padding-top: 45px
+    margin-bottom: 80px
+    h3
+      font-size: 19px !important
+      line-height: 25px
+      max-width: 275px
+      &::before
+        position: absolute
+        content: url(../assets/promo-1-gift-m.png)
+        right: 20px
+        bottom: -15px
+      &::after
+        position: absolute
+        content: url(../assets/promo-1-arrow-m.png)
+        right: 0px
+        top: 90px
+    &__img1
+      position: absolute
+      width: 180px
+      height: 214px
+      object-fit: contain
+      right: 76px
+      bottom: 13px
+      z-index: 2
+    &__img2
+      position: absolute
+      width: 230px
+      height: 181px
+      object-fit: contain
+      right: -41px
+      bottom: 10px
+      z-index: -1
+
+.promo2
+  position: relative
+  background: url(../assets/promo-2-bg.png) no-repeat center
+  height: 488px
+  margin-bottom: 367px
+  padding-top: 150px
+  &__img1
+    position: absolute
+    right: 0px
+    bottom: -80px
+    z-index: 2
+  &__img2
+    position: absolute
+    right: 33%
+    top: 50%
+    transform: translateY(-50%)
+    z-index: 1
+  h3
+    position: relative
+    max-width: 555px
+    line-height: 53px
+    color: white
+    &::after
+      position: absolute
+      content: url(../assets/promo-1-arrow.png)
+      right: -90px
+      top: 45px
+
+
+@media (max-width: 599px)
+  .promo2
+    padding-top: 45px
+    height: 378px
+    margin-bottom: 80px
+    h3
+      font-size: 19px !important
+      line-height: 25px
+      max-width: unset
+      &::after
+        position: absolute
+        content: url(../assets/promo-1-arrow-m.png)
+        right: 82px
+        top: 61px
+    &__img1
+      position: absolute
+      right: -24px
+      bottom: -56px
+      z-index: 2
+      width: 286px
+      height: 222px
+      object-fit: contain
+    &__img2
+      position: absolute
+      width: 82px
+      height: 89px
+      object-fit: contain
+      right: 33%
+      top: 50%
+      transform: translateY(-70%)
+      z-index: 1
+
+
 .cart-item
   width: 1000px
 .itemCard
@@ -1491,9 +1652,13 @@ export default {
 
 
 .feedbacks
-  margin-bottom: 90px
+  margin-bottom: 217px
+  h3
+    margin-bottom: 70px
+
 @media (max-width: 599px)
   .feedbacks
+    margin-bottom: 30px
     h3
       text-align: center
 .certs
