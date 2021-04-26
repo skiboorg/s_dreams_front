@@ -234,6 +234,14 @@
         </div>
       </div>
     </section>
+     <section v-if="currentCat.showPromoBlock" class="promo1">
+      <div class="container ">
+        <h3 class="text-h4 text-weight-bold q-mb-md" >При заказе 2-х комплектов  - Бесплатная доставка в подарок</h3>
+
+      </div>
+       <img class="promo1__img1" src="../assets/promo-1-img1.png" alt="">
+       <img class="promo1__img2" src="../assets/promo-1-img2.png" alt="">
+    </section>
     <section ref="catalog" class="catalog">
       <div class="container">
         <h3 class="text-h4 text-weight-bold text-center q-mb-md" >Каталог</h3>
@@ -286,6 +294,14 @@
           <q-btn v-if="total_pages && total_pages>current_page" :loading="is_loading" @click="getItems(current_slug,true)" unelevated rounded color="primary" class="q-px-lg"  size="lg" label="Посмотреть еще"/>
         </div>
       </div>
+    </section>
+     <section v-if="currentCat.showPromoBlock" class="promo2">
+      <div class="container">
+        <h3 class="text-h4 text-weight-bold q-mb-md" >При заказе 3-х комплектов - Бесплатная доставка и маска для сна в подарок</h3>
+
+      </div>
+       <img class="promo2__img1" src="../assets/promo-2-img1.png" alt="">
+       <img class="promo2__img2" src="../assets/promo-2-img2.png" alt="">
     </section>
     <section class="quiz">
       <div class="full-height flex column items-center justify-start">
@@ -354,22 +370,7 @@
         </q-no-ssr>
       </div>
     </section>
-     <section v-if="currentCat.showPromoBlock" class="promo1">
-      <div class="container ">
-        <h3 class="text-h4 text-weight-bold q-mb-md" >При заказе 2-х комплектов  - Бесплатная доставка в подарок</h3>
 
-      </div>
-       <img class="promo1__img1" src="../assets/promo-1-img1.png" alt="">
-       <img class="promo1__img2" src="../assets/promo-1-img2.png" alt="">
-    </section>
-      <section v-if="currentCat.showPromoBlock" class="promo2">
-      <div class="container">
-        <h3 class="text-h4 text-weight-bold q-mb-md" >При заказе 3-х комплектов - Бесплатная доставка и маска для сна в подарок</h3>
-
-      </div>
-       <img class="promo2__img1" src="../assets/promo-2-img1.png" alt="">
-       <img class="promo2__img2" src="../assets/promo-2-img2.png" alt="">
-    </section>
     <section id="certs" ref="certs" class="certs">
       <div class="container">
         <h3 class="text-h4 text-weight-bold q-mb-md" >Сертификаты, подтверждающие качество, надежность и безопасность постельного белья Alanna</h3>
@@ -1124,7 +1125,7 @@ export default {
   position: relative
   background: url(../assets/promo-2-bg.png) no-repeat center
   height: 488px
-  margin-bottom: 367px
+  margin-bottom: 170px
   padding-top: 150px
   &__img1
     position: absolute
@@ -1652,14 +1653,13 @@ export default {
 
 
 .feedbacks
-  margin-bottom: 217px
   h3
     margin-bottom: 70px
 
 @media (max-width: 599px)
   .feedbacks
-    margin-bottom: 30px
     h3
+      margin-bottom: 35px
       text-align: center
 .certs
   background-image: url("../assets/cert-bg.png")
