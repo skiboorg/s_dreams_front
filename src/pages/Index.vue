@@ -238,7 +238,7 @@
       <div class="container">
         <h3 class="text-h4 text-weight-bold text-center q-mb-md" >Каталог</h3>
         <div class="catalog-grid ">
-          <q-card v-if="check_ost_all(item)" class="catalog-card" v-for="(item,index) in items" :key="item.id">
+          <q-card  class="catalog-card" v-for="(item,index) in items" :key="item.id">
             <q-img :ratio="4/3"  :src="item.image" />
             <q-card-section>
               <p class="col text-h6 text-weight-semi-bold ellipsis text-grey-10 q-mb-none">{{item.name}}</p>
