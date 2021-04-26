@@ -892,22 +892,18 @@ export default {
         }
       }
       const response_items = await this.$api.post(`/api/send_mail`,{type:type, data:data})
-      if (type === 'quiz'){
-        this.$router.push('/thanks')
-      }
       if (type === 'order'){
         await this.fetchCart()
         this.$q.notify({
           message: 'Ваш заказ успешно оформлен',
           color: 'positive',
           position:'top-right',
-
         })
         const response_ost = await this.$api.get(`/api/get_ost?cat_slug=${this.currentCat.name_slug}`)
         this.ostatki = response_ost.data
         this.cart = false
-        this.$router.push('/thanks')
       }
+      this.$router.push('/thanks')
       this.is_loading = false
     },
     changePage(name_slug){
