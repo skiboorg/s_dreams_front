@@ -609,7 +609,7 @@
 
 
 
-              <q-card-section  class="col-lg-8 col-md-8 col-sm-8 col-xs-12 q-py-none " :class="$q.screen.gt.xs ? 'q-px-lg' : 'no-padding'">
+              <q-card-section  class="col-lg-6 col-md-6 col-sm-8 col-xs-12 q-py-none " :class="$q.screen.gt.xs ? 'q-px-lg' : 'no-padding'">
                 <div class="q-gutter-md q-mb-lg gt-xs">
                   <q-btn :label="size.name "
                          v-for="(size,index) in openedItem.size"
