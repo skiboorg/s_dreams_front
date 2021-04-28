@@ -428,8 +428,8 @@
           <q-input :class="!$q.screen.gt.xs ? 'bg-white' : ''" outlined v-model="name" label="Ваше имя"/>
           <q-input :class="!$q.screen.gt.xs ? 'bg-white' : ''" outlined v-model="phone" label="Ваш телефон *"
                    mask="+### (##) ###-##-##"
-                   fill-mask=""
-                   lazy-rules :rules="[val => !val.includes('_') || 'Введите корректный номер телефона']"/>
+                   fill-mask="9"
+                   lazy-rules :rules="[val => !val.includes('9') || 'Введите корректный номер телефона']"/>
           <div>
             <q-btn label="Отправить" type="submit" rounded unelevated class="full-width" size="lg" color="primary"/>
 
@@ -477,7 +477,7 @@
 
           </div>
           <div class="col-lg-3 col-md-3 col-sm-3 text-right ">
-            <p class="font-size-14 q-mb-sm"><a class="text-grey-6" href="">Политика конфиденциальности</a></p>
+            <p class="font-size-14 q-mb-sm"><a class="text-grey-6" target="_blank" href="/politica.html">Политика конфиденциальности</a></p>
             <div class="">
               <a href="https://wa.me/+375336955695" target="_blank"><img src="../assets/header-w-logo.png" alt=""></a>
               <a href="https://telegram.im/@sweetdreemm" target="_blank"><img src="../assets/header-t-logo.png" alt=""></a>
@@ -500,7 +500,7 @@
             <p @click="scrollToElement($refs.faq)" class="font-size-10 q-mb-md cursor-pointer">Частые вопросы</p>
             <p @click="scrollToElement($refs.feedbacks)" class="font-size-10 q-mb-md cursor-pointer">Отзывы</p>
             <p @click="scrollToElement($refs.certs)" class="font-size-10 q-mb-md cursor-pointer">Сертификаты</p>
-            <p class="font-size-10 q-mb-sm"><a class="text-grey-6" href="">Политика конфиденциальности</a></p>
+            <p class="font-size-10 q-mb-sm"><a class="text-grey-6" target="_blank" href="/politica.html">Политика конфиденциальности</a></p>
           </div>
           <div class="col-7">
             <p class="text-weight-semi-bold font-size-16 flex items-center"><img style="width: 11px; height: 11px; object-fit: contain" class="q-mr-xs" src="../assets/header-phone-icon.png" alt=""><a class="text-grey-9 font-size-12 text-no-decoration" href="tel:+375336955695">+375 33 695-56-95</a></p>
@@ -557,8 +557,8 @@
             <q-input outlined v-model="name" class="full-width q-mb-md" label="Ваше имя"/>
             <q-input outlined v-model="phone" class="full-width q-mb-sm" label="Ваш телефон *"
                      mask="+### (##) ###-##-##"
-                     fill-mask=""
-                     lazy-rules :rules="[val => !val.includes('_') || 'Введите корректный номер телефона']"/>
+                     fill-mask="9"
+                     lazy-rules :rules="[val => !val.includes('9') || 'Введите корректный номер телефона']"/>
 
             <div>
               <q-btn label="Заказать" type="submit" :loading="is_loading" rounded unelevated class="full-width" size="lg" color="primary"/>
@@ -670,8 +670,8 @@
 
               <q-input  v-model="phone" class="full-width q-mb-sm" label="Ваш телефон *"
                         mask="+### (##) ###-##-##"
-                        fill-mask=""
-                        lazy-rules :rules="[val => !val.includes('_') || 'Введите корректный номер телефона']"/>
+                        fill-mask="9"
+                        lazy-rules :rules="[val => !val.includes('9') || 'Введите корректный номер телефона']"/>
               <div>
                 <q-btn label="Готово" :loading="is_loading" type="submit" rounded unelevated class="full-width" size="lg" color="primary"/>
               </div>
@@ -731,8 +731,8 @@
                   <q-input  v-model="name" class="full-width q-mb-md" label="Ваше имя"/>
                   <q-input  v-model="phone" class="full-width q-mb-sm" label="Ваш телефон *"
                             mask="+### (##) ###-##-##"
-                            fill-mask=""
-                            lazy-rules :rules="[val => !val.includes('_') || 'Введите корректный номер телефона']"/>
+                            fill-mask="9"
+                            lazy-rules :rules="[val => !val.includes('9') || 'Введите корректный номер телефона']"/>
                   <div>
                     <q-btn label="Готово" :loading="is_loading" type="submit" rounded unelevated class="full-width" size="lg" color="primary"/>
                   </div>
@@ -776,7 +776,7 @@ export default {
       ostatki:[],
       cats:[],
       currentCat:{},
-      phone:'',
+      phone:'+375',
       selectedType:1,
       currFeature:0,
       currStep:0,
@@ -992,6 +992,7 @@ export default {
           { label: 'Корзина', color: 'white', handler: () => { this.cart = true } }
         ]
       })
+      this.cart = true
     },
     showItem(index){
       this.openedItem = this.items[index]
