@@ -428,8 +428,8 @@
           <q-input :class="!$q.screen.gt.xs ? 'bg-white' : ''" outlined v-model="name" label="Ваше имя"/>
           <q-input :class="!$q.screen.gt.xs ? 'bg-white' : ''" outlined v-model="phone" label="Ваш телефон *"
                    mask="+### (##) ###-##-##"
-                   fill-mask="9"
-                   lazy-rules :rules="[val => !val.includes('9') || 'Введите корректный номер телефона']"/>
+
+                   lazy-rules :rules="[val => val.length===19 || 'Введите корректный номер телефона']"/>
           <div>
             <q-btn label="Отправить" type="submit" rounded unelevated class="full-width" size="lg" color="primary"/>
 
@@ -557,8 +557,8 @@
             <q-input outlined v-model="name" class="full-width q-mb-md" label="Ваше имя"/>
             <q-input outlined v-model="phone" class="full-width q-mb-sm" label="Ваш телефон *"
                      mask="+### (##) ###-##-##"
-                     fill-mask="9"
-                     lazy-rules :rules="[val => !val.includes('9') || 'Введите корректный номер телефона']"/>
+                      autofocus
+                     lazy-rules :rules="[val => val.length===19 || 'Введите корректный номер телефона']"/>
 
             <div>
               <q-btn label="Заказать" type="submit" :loading="is_loading" rounded unelevated class="full-width" size="lg" color="primary"/>
@@ -667,11 +667,11 @@
             <p class="font-size-25 text-weight-semi-bold inner_text"><span class="text-primary">Оставьте номер телефона с Viber,</span> мы свяжемся с Вами и вышлем эксклюзивные расцветки, которых нет на сайте!</p>
             <q-form style="margin: 0 auto" @submit="sendMail('callback')" class="callback-form q-mb-md ">
               <q-input  v-model="name" class="full-width q-mb-md" label="Ваше имя"/>
-
+{{phone.length}}
               <q-input  v-model="phone" class="full-width q-mb-sm" label="Ваш телефон *"
                         mask="+### (##) ###-##-##"
-                        fill-mask="9"
-                        lazy-rules :rules="[val => !val.includes('9') || 'Введите корректный номер телефона']"/>
+                        autofocus
+                        lazy-rules :rules="[val => val.length===19 || 'Введите корректный номер телефона']"/>
               <div>
                 <q-btn label="Готово" :loading="is_loading" type="submit" rounded unelevated class="full-width" size="lg" color="primary"/>
               </div>
@@ -731,8 +731,8 @@
                   <q-input  v-model="name" class="full-width q-mb-md" label="Ваше имя"/>
                   <q-input  v-model="phone" class="full-width q-mb-sm" label="Ваш телефон *"
                             mask="+### (##) ###-##-##"
-                            fill-mask="9"
-                            lazy-rules :rules="[val => !val.includes('9') || 'Введите корректный номер телефона']"/>
+                            autofocus
+                            lazy-rules :rules="[val => val.length===19 || 'Введите корректный номер телефона']"/>
                   <div>
                     <q-btn label="Готово" :loading="is_loading" type="submit" rounded unelevated class="full-width" size="lg" color="primary"/>
                   </div>
