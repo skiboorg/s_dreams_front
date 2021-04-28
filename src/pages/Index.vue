@@ -667,7 +667,6 @@
             <p class="font-size-25 text-weight-semi-bold inner_text"><span class="text-primary">Оставьте номер телефона с Viber,</span> мы свяжемся с Вами и вышлем эксклюзивные расцветки, которых нет на сайте!</p>
             <q-form style="margin: 0 auto" @submit="sendMail('callback')" class="callback-form q-mb-md ">
               <q-input  v-model="name" class="full-width q-mb-md" label="Ваше имя"/>
-{{phone.length}}
               <q-input  v-model="phone" class="full-width q-mb-sm" label="Ваш телефон *"
                         mask="+### (##) ###-##-##"
                         autofocus
