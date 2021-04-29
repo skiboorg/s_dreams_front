@@ -255,6 +255,7 @@
 
               <div class="row ">
                 <q-radio
+
                   v-for="(size,index) in item.size"
                   v-model="item.selected_size"
                   :disable="check_ost(item.id,size.id)"
@@ -262,7 +263,7 @@
                   dense size="sm"
                   class="col-lg-6 col-md-6 col-sm-6 col-xs-12 font-size-16 text-weight-semi-bold text-grey-8"
                   :val="size.id"
-                  :label="size.name " >
+                  :label="size.name" >
                   <q-tooltip v-if="check_ost(item.id,size.id)" anchor="center left" self="center right" :offset="[10, 10]">
                     Нет в наличии
                   </q-tooltip>
@@ -279,13 +280,14 @@
                 <span class=" text-weight-bold  font-size-18 catalog-card__price"
                 :class="[item.size.find(x=>x.id === item.selected_size).discount>0 ? 'text-red' : 'text-primary']">
                   {{item.size.find(x=>x.id === item.selected_size).price}} BYN</span>
+
               </p>
             </q-card-section>
 
             <q-card-actions class="flex items-center justify-evenly q-pb-md">
               <q-btn class="q-px-lg text-weight-semi-bold " @click="showItem(index)"   rounded color="primary"  label="Подробнее" />
               <q-btn class="q-px-lg text-weight-semi-bold " @click="addToCart(item.id,item.size.find(x=>x.id === item.selected_size).id)"
-                     outline rounded color="primary" label="Заказать" />
+                     outline rounded color="primary" :disable="check_ost(item.id,item.selected_size)" label="Заказать" />
             </q-card-actions>
           </q-card>
 
@@ -604,11 +606,7 @@
                   </q-btn>
 
                 </div>
-
               </div>
-
-
-
               <q-card-section  class="col-lg-6 col-md-6 col-sm-8 col-xs-12 q-py-none " :class="$q.screen.gt.xs ? 'q-px-lg' : 'no-padding'">
                 <div class="q-gutter-md q-mb-lg gt-xs">
                   <q-btn :label="size.name "
@@ -621,7 +619,6 @@
                          unelevated
                          color="primary">
                   </q-btn>
-
                 </div>
                 <div class="itemCard__info">
                   <p class="text-weight-semi-bold font-size-20">Комплект:</p>
@@ -637,16 +634,15 @@
                     {{openedItem.size[selectedType].price}} BYN
                   </span>
                   </p>
-
                 </div>
                 <div class="">
-                  <q-btn @click="addToCart(openedItem.id,openedItem.size[selectedType].id)" label="Заказать " size="lg" class="q-px-xl" rounded unelevated color="primary"/>
+                  <q-btn @click="addToCart(openedItem.id,openedItem.size[selectedType].id)"
+                         :disable="check_ost(openedItem.id,openedItem.size[selectedType].id)"
+                         label="Заказать " size="lg" class="q-px-xl" rounded unelevated color="primary"/>
                 </div>
 
 
               </q-card-section>
-
-
             </q-card-section>
           </q-card>
         </q-card-section>
