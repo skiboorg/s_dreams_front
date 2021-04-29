@@ -107,7 +107,7 @@
           </h1>
           <p class="font-size-12 text-primary text-weight-bold">До конца акции осталось:</p>
           <q-no-ssr>
-            <CD :time="(24 - new Date().getHours())  * 60 * 60 * 1000" v-slot="{ days, hours, minutes, seconds }" class="offer-timer flex items-start justify-start q-mb-lg">
+            <CD :time="timer" v-slot="{ days, hours, minutes, seconds }" class="offer-timer flex items-start justify-start q-mb-lg">
               <div class="text-center timer-item">
                 <p class="text-primary text-h3 text-weight-semi-bold q-mb-none">{{ days }} </p>
                 <p style="opacity: .6" class="font-size-12 text-primary text-weight-bold ">Дней</p>
@@ -337,7 +337,7 @@
         <p class="text-h4 text-weight-bold text-center  text-white" :class="$q.screen.gt.xs ? '' : 'q-mb-none'">Оставляй заявку!</p>
         <p class="text-h4 text-weight-bold text-center   text-white" :class="$q.screen.gt.xs ? 'q-mb-xl' : 'q-mb-sm'">До конца акции осталось:</p>
         <q-no-ssr>
-          <CD :time="(24 - new Date().getHours()) * 60 * 60 * 1000" v-slot="{ days, hours, minutes, seconds }" class="flex items-start justify-start q-mb-lg">
+          <CD :time="timer" v-slot="{ days, hours, minutes, seconds }" class="flex items-start justify-start q-mb-lg">
             <div class="text-center timer-item ">
               <p class="text-white text-h3 text-weight-semi-bold q-mb-none">{{ days }} </p>
               <p style="opacity: .6" class="font-size-12 text-white text-weight-bold ">Дней</p>
@@ -753,6 +753,7 @@ export default {
   },
   data () {
     return {
+      timer:0,
       has_ost: false,
       callBack: false,
       tab:'',
@@ -864,7 +865,16 @@ export default {
     }
   },
   async mounted() {
-    console.log(new Date().getHours())
+    var actualDate = new Date()
+    var eodDate = new Date(Math.floor(actualDate.getTime()/86400000+1)*86400000 + actualDate .getTimezoneOffset()*60000 - 1000)
+    console.log(eodDate.getTime())
+    this.timer = eodDate.getTime()
+    var actualTime = new Date(Date.now());
+
+  var endOfDay = new Date(actualTime.getFullYear(), actualTime.getMonth(), actualTime.getDate() + 1, 0, 0, 0);
+
+
+  this.timer =  endOfDay.getTime() - actualTime.getTime();
     const response_cats = await this.$api.get('/api/get_cats')
     this.cats = response_cats.data
     let cat_slug = this.$route.params.cat_slug
