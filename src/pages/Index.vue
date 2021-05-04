@@ -32,16 +32,16 @@
             <q-tab name="fb" @click="scrollToElement($refs.feedbacks)" label="Отзывы" />
           </q-tabs>
           <div class="flex items-center justify-between ">
-            <img class="q-mr-xs" src="~assets/header-phone-icon.png" alt="">
+            <img class="q-mr-xs" src="~assets/header-phone-icon.webp" alt="">
             <p class="no-margin ">
               <a class="text-weight-semi-bold text-grey-8 font-size-18 text-no-decoration" href="tel:+375336955695">+375 33 695-56-95</a>
             </p>
           </div>
           <q-space/>
           <div class="q-gutter-xs q-mt-none gt-sm">
-            <a href="https://wa.me/+375336955695" target="_blank"><img src="../assets/header-w-logo.png" alt=""></a>
-            <a href="https://telegram.im/@sweetdreemm" target="_blank"><img src="../assets/header-t-logo.png" alt=""></a>
-            <a href="viber://chat?number=+375336955695" target="_blank"><img src="../assets/header-v-logo.png" alt=""></a>
+            <a href="https://wa.me/+375336955695" target="_blank"><img src="../assets/header-w-logo.webp" alt=""></a>
+            <a href="https://telegram.im/@sweetdreemm" target="_blank"><img src="../assets/header-t-logo.webp" alt=""></a>
+            <a href="viber://chat?number=+375336955695" target="_blank"><img src="../assets/header-v-logo.webp" alt=""></a>
           </div>
           <q-space class="gt-sm"/>
           <div class="gt-sm">
@@ -239,8 +239,8 @@
         <h3 class="text-h4 text-weight-bold q-mb-md" >При заказе 2-х комплектов  - Бесплатная доставка в подарок</h3>
 
       </div>
-       <img class="promo1__img1" src="../assets/promo-1-img1.png" alt="">
-       <img class="promo1__img2" src="../assets/promo-1-img2.png" alt="">
+       <img class="promo1__img1" src="../assets/promo-1-img1.webp" alt="">
+       <img class="promo1__img2" src="../assets/promo-1-img2.webp" alt="">
     </section>
     <section ref="catalog" class="catalog">
       <div class="container">
@@ -302,15 +302,15 @@
         <h3 class="text-h4 text-weight-bold q-mb-md" >При заказе 3-х комплектов - Бесплатная доставка и маска для сна в подарок</h3>
 
       </div>
-       <img class="promo2__img1" src="../assets/promo-2-img1.png" alt="">
-       <img class="promo2__img2" src="../assets/promo-2-img2.png" alt="">
+       <img class="promo2__img1" src="../assets/promo-2-img1.webp" alt="">
+       <img class="promo2__img2" src="../assets/promo-2-img2.webp" alt="">
     </section>
     <section class="quiz">
       <div class="full-height flex column items-center justify-start">
         <h3 class="text-h4 text-weight-bold text-center q-mb-xl gt-sm" >Не можете определиться?</h3>
         <p class="quiz-subtitle font-size-25"><span class="text-accent text-weight-semi-bold ">Ответьте на 4 простых вопроса</span>  и наш дизайнер подберет белье под ваш интерьер и пожелания,
           а также получите бонус -дизайнерскую открытку в подарок!</p>
-        <img class="lt-sm" src="../assets/quiz-m.png" alt="">
+        <img class="lt-sm" src="../assets/quiz-m.webp" alt="">
         <q-btn @click="quiz=!quiz" class="q-px-lg text-weight-semi-bold "  size="lg" unelevated rounded color="primary"  label="Ответить на вопросы" />
 
       </div>
@@ -326,7 +326,7 @@
             <q-btn @click="scrollToElement($refs.catalog)" v-if="$q.screen.gt.xs" class="q-px-lg text-weight-semi-bold "   unelevated rounded color="primary" size="lg" label="В каталог" />
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 offset-lg-1 offset-md-1 offset-sm-1 offset-xs-0 flex column items-center justify-between">
-            <img src="../assets/pillow.jpg" alt="">
+            <img src="../assets/pillow.webp" alt="">
             <q-btn @click="scrollToElement($refs.catalog)" v-if="!$q.screen.gt.xs" class="q-px-lg text-weight-semi-bold "   unelevated rounded color="primary" size="lg" label="В каталог" />
           </div>
         </div>
@@ -381,16 +381,16 @@
           <swiper style="padding: 30px 0" ref="recommendedSlider"  class="cart-recommended__slider" :options="sliderCertOption">
 
             <swiper-slide>
-              <img style="max-width: 100%; height: auto" src="../assets/cert.jpg" alt="">
+              <img style="max-width: 100%; height: auto" src="../assets/cert.webp" alt="">
             </swiper-slide>
             <swiper-slide>
-              <img style="max-width: 100%; height: auto" src="../assets/cert.jpg" alt="">
+              <img style="max-width: 100%; height: auto" src="../assets/cert.webp" alt="">
             </swiper-slide>
             <swiper-slide>
-              <img style="max-width: 100%; height: auto" src="../assets/cert.jpg" alt="">
+              <img style="max-width: 100%; height: auto" src="../assets/cert.webp" alt="">
             </swiper-slide>
             <swiper-slide>
-              <img style="max-width: 100%; height: auto" src="../assets/cert.jpg" alt="">
+              <img style="max-width: 100%; height: auto" src="../assets/cert.webp" alt="">
             </swiper-slide>
             <!--              <div class="swiper-button-prev" slot="button-prev"></div>-->
             <!--              <div class="swiper-button-next" slot="button-next"></div>-->
@@ -444,12 +444,12 @@
       <div class="map-inner">
         <h3 class="text-h4 text-weight-bold q-mb-xl">Свяжитесь с нами!</h3>
 
-        <p class="text-weight-semi-bold font-size-25 flex items-center"><img class="q-mr-md" src="../assets/header-phone-icon.png" alt=""><a class="text-primary text-no-decoration" href="tel:+375336955695">+375 33 695-56-95</a></p>
-        <p class="text-weight-semi-bold font-size-25 text-primary flex items-center"><img class="q-mr-md" src="../assets/bi_geo-alt.png" alt=""><span >Тарасово, ул Рабочая д 2</span></p>
+        <p class="text-weight-semi-bold font-size-25 flex items-center"><img class="q-mr-md" src="../assets/header-phone-icon.webp" alt=""><a class="text-primary text-no-decoration" href="tel:+375336955695">+375 33 695-56-95</a></p>
+        <p class="text-weight-semi-bold font-size-25 text-primary flex items-center"><img class="q-mr-md" src="../assets/bi_geo-alt.webp" alt=""><span >Тарасово, ул Рабочая д 2</span></p>
         <div class="q-gutter-md">
-          <a href="https://wa.me/+375336955695" target="_blank"><img src="../assets/header-w-logo.png" alt=""></a>
-          <a href="https://telegram.im/@sweetdreemm" target="_blank"><img src="../assets/header-t-logo.png" alt=""></a>
-          <a href="viber://chat?number=+375336955695" target="_blank"><img src="../assets/header-v-logo.png" alt=""></a>
+          <a href="https://wa.me/+375336955695" target="_blank"><img src="../assets/header-w-logo.webp" alt=""></a>
+          <a href="https://telegram.im/@sweetdreemm" target="_blank"><img src="../assets/header-t-logo.webp" alt=""></a>
+          <a href="viber://chat?number=+375336955695" target="_blank"><img src="../assets/header-v-logo.webp" alt=""></a>
         </div>
       </div>
 
@@ -470,8 +470,8 @@
             </div>
             <q-separator spaced="md"/>
             <div class="flex items-center justify-between">
-              <p class="text-weight-semi-bold font-size-16 flex items-center"><img class="q-mr-md" src="../assets/header-phone-icon.png" alt=""><a class="text-grey-9 text-no-decoration" href="tel:+375336955695">+375 33 695-56-95</a></p>
-              <p class="text-weight-semi-bold font-size-16 flex items-center"><img class="q-mr-md" src="../assets/mail-icon.png" alt=""><a class="text-grey-9 text-no-decoration" href="mailto:ToYou.work@yandex.by">ToYou.work@yandex.by</a></p>
+              <p class="text-weight-semi-bold font-size-16 flex items-center"><img class="q-mr-md" src="../assets/header-phone-icon.webp" alt=""><a class="text-grey-9 text-no-decoration" href="tel:+375336955695">+375 33 695-56-95</a></p>
+              <p class="text-weight-semi-bold font-size-16 flex items-center"><img class="q-mr-md" src="../assets/mail-icon.webp" alt=""><a class="text-grey-9 text-no-decoration" href="mailto:ToYou.work@yandex.by">ToYou.work@yandex.by</a></p>
               <p class="text-weight-semi-bold font-size-16 flex items-center">Время работы с 9:30 до 21:30</p>
 
 
@@ -481,9 +481,9 @@
           <div class="col-lg-3 col-md-3 col-sm-3 text-right ">
             <p class="font-size-14 q-mb-sm"><a class="text-grey-6" target="_blank" href="/politica.html">Политика конфиденциальности</a></p>
             <div class="">
-              <a href="https://wa.me/+375336955695" target="_blank"><img src="../assets/header-w-logo.png" alt=""></a>
-              <a href="https://telegram.im/@sweetdreemm" target="_blank"><img src="../assets/header-t-logo.png" alt=""></a>
-              <a href="viber://chat?number=+375336955695" target="_blank"><img src="../assets/header-v-logo.png" alt=""></a>
+              <a href="https://wa.me/+375336955695" target="_blank"><img src="../assets/header-w-logo.webp" alt=""></a>
+              <a href="https://telegram.im/@sweetdreemm" target="_blank"><img src="../assets/header-t-logo.webp" alt=""></a>
+              <a href="viber://chat?number=+375336955695" target="_blank"><img src="../assets/header-v-logo.webp" alt=""></a>
 
 
 
@@ -505,13 +505,13 @@
             <p class="font-size-10 q-mb-sm"><a class="text-grey-6" target="_blank" href="/politica.html">Политика конфиденциальности</a></p>
           </div>
           <div class="col-7">
-            <p class="text-weight-semi-bold font-size-16 flex items-center"><img style="width: 11px; height: 11px; object-fit: contain" class="q-mr-xs" src="../assets/header-phone-icon.png" alt=""><a class="text-grey-9 font-size-12 text-no-decoration" href="tel:+375336955695">+375 33 695-56-95</a></p>
-            <p class="text-weight-semi-bold font-size-16 flex items-center"><img style="width: 11px; height: 11px; object-fit: contain" class="q-mr-xs" src="../assets/mail-icon.png" alt=""><a class="text-grey-9 font-size-12 text-no-decoration" href="mailto:ToYou.work@yandex.by">ToYou.work@yandex.by</a></p>
-            <p class="text-weight-semi-bold font-size-10 flex items-center"><img style="width: 11px; height: 11px; object-fit: contain" class="q-mr-xs" src="../assets/time-icon.png" alt="">Время работы с 9:30 до 21:30</p>
+            <p class="text-weight-semi-bold font-size-16 flex items-center"><img style="width: 11px; height: 11px; object-fit: contain" class="q-mr-xs" src="../assets/header-phone-icon.webp" alt=""><a class="text-grey-9 font-size-12 text-no-decoration" href="tel:+375336955695">+375 33 695-56-95</a></p>
+            <p class="text-weight-semi-bold font-size-16 flex items-center"><img style="width: 11px; height: 11px; object-fit: contain" class="q-mr-xs" src="../assets/mail-icon.webp" alt=""><a class="text-grey-9 font-size-12 text-no-decoration" href="mailto:ToYou.work@yandex.by">ToYou.work@yandex.by</a></p>
+            <p class="text-weight-semi-bold font-size-10 flex items-center"><img style="width: 11px; height: 11px; object-fit: contain" class="q-mr-xs" src="../assets/time-icon.webp" alt="">Время работы с 9:30 до 21:30</p>
             <div class="">
-              <a href="https://wa.me/+375336955695" target="_blank"><img src="../assets/header-w-logo.png" alt=""></a>
-              <a href="https://telegram.im/@sweetdreemm" target="_blank"><img src="../assets/header-t-logo.png" alt=""></a>
-              <a href="viber://chat?number=+375336955695" target="_blank"><img src="../assets/header-v-logo.png" alt=""></a>
+              <a href="https://wa.me/+375336955695" target="_blank"><img src="../assets/header-w-logo.webp" alt=""></a>
+              <a href="https://telegram.im/@sweetdreemm" target="_blank"><img src="../assets/header-t-logo.webp" alt=""></a>
+              <a href="viber://chat?number=+375336955695" target="_blank"><img src="../assets/header-v-logo.webp" alt=""></a>
 
 
             </div>
@@ -698,8 +698,8 @@
               <div v-if="!q.is_form" class="quiz-grid">
                 <div class="quiz-item" v-for="i in q.choices" :key="i.id">
                   <div class="quiz-item__img" :class="{'itemSelected':quizAnswers[currStep].answer===i.name}"
-                       :style="{'background': `url(quiz/q${currStep+1}-${i.id}.png)`}">
-                    <!--                <img :src="`img/q${currStep+1}-${i.id}.png`" alt="">-->
+                       :style="{'background': `url(quiz/q${currStep+1}-${i.id}.webp)`}">
+                    <!--                <img :src="`img/q${currStep+1}-${i.id}.webp`" alt="">-->
                   </div>
                   <div class="quiz-item__bottom">
                     <q-btn rounded @click="quizAnswers[currStep].answer=i.name" class="full-width q-mb-md "
@@ -789,25 +789,25 @@ export default {
       ],
       quizQuestions:[
         {id:1,title:'Выберите размер постельного белья',choices:[
-            {id:1,name:'1.5 спальное',url:'q1-1.png',info:`1 простыня 150x220;<br>1 пододеяльник 150x220;<br>2 наволочки 70x70;)`},
-            {id:2,name:'2 спальное',url:'q1-1.png',info:`1 простыня 180x220; <br>1 пододеяльник 180x220;<br>2 наволочки 70x70`},
-            {id:3,name:'Евро',url:'q1-1.png',info:`1 простыня 220x240;<br>1 пододеяльник 200x220; 2 наволочки 70x70;<br>2 наволочки 50x70 `},
-            {id:4,name:'Семейное',url:'q1-1.png',info:`1 простыня 220x240;<br>2 пододеяльника; <br>2 наволочки 70x70;<br>2 наволочки 50x70`},
+            {id:1,name:'1.5 спальное',url:'q1-1.webp',info:`1 простыня 150x220;<br>1 пододеяльник 150x220;<br>2 наволочки 70x70;)`},
+            {id:2,name:'2 спальное',url:'q1-1.webp',info:`1 простыня 180x220; <br>1 пододеяльник 180x220;<br>2 наволочки 70x70`},
+            {id:3,name:'Евро',url:'q1-1.webp',info:`1 простыня 220x240;<br>1 пододеяльник 200x220; 2 наволочки 70x70;<br>2 наволочки 50x70 `},
+            {id:4,name:'Семейное',url:'q1-1.webp',info:`1 простыня 220x240;<br>2 пододеяльника; <br>2 наволочки 70x70;<br>2 наволочки 50x70`},
           ],is_form:false
         },
         {id:2,title:'Дизайнерское или монотонное белье?',choices:[
-            {id:1,name:'Дизайнерское',url:'assets/q1-1.png',info:''},
-            {id:2,name:'Монотонное',url:'assets/q1-1.png',info:''},
+            {id:1,name:'Дизайнерское',url:'assets/q1-1.webp',info:''},
+            {id:2,name:'Монотонное',url:'assets/q1-1.webp',info:''},
           ],is_form:false
         },
         {id:3,title:'Для себя или в подарок?',choices:[
-            {id:1,name:'Для себя',url:'assets/q1-1.png',info:''},
-            {id:2,name:'В подарок',url:'assets/q1-1.png',info:''}
+            {id:1,name:'Для себя',url:'assets/q1-1.webp',info:''},
+            {id:2,name:'В подарок',url:'assets/q1-1.webp',info:''}
           ],is_form:false
         },
         {id:4,title:'В какой город необходима доставка?',choices:[
-            {id:1,name:'по Минску',url:'assets/q1-1.png',info:''},
-            {id:2,name:'По Беларуси',url:'assets/q1-1.png',info:''}
+            {id:1,name:'по Минску',url:'assets/q1-1.webp',info:''},
+            {id:2,name:'По Беларуси',url:'assets/q1-1.webp',info:''}
           ],is_form:false
         },
         {id:5,title:'',choices:[],is_form:true

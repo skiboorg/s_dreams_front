@@ -14,8 +14,8 @@
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "quasar": "^1.0.0",
-    "vue": "^2.6.12",
     "swiper": "^5.3.6",
+    "vue": "^2.6.12",
     "vue-awesome-swiper": "^4.1.1",
     "vue-yandex-maps": "^0.10.9"
   },
