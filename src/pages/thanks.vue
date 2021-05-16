@@ -122,9 +122,9 @@ export default {
 
     const script1 = document.createElement("script");
     script1.innerText= `
-  fbq('init', '757475264939457');
-  fbq('track', 'PageView');
-  fbq('track', 'CompleteRegistration');
+ fbq('init', '782549839070249');
+fbq('track', 'PageView');
+fbq('track', 'CompleteRegistration');
     `;
     document.body.appendChild(script1);
     this.get_items()
