@@ -127,6 +127,31 @@ fbq('track', 'PageView');
 fbq('track', 'CompleteRegistration');
     `;
     document.body.appendChild(script1);
+//----------
+
+
+    const script2 = document.createElement("script");
+    script1.innerText= `
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(76548748, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+    `;
+    document.head.appendChild(script2);
+
+        const script3 = document.createElement("noscript");
+    script1.innerText= `
+   <div><img src="https://mc.yandex.ru/watch/76548748" style="position:absolute; left:-9999px;" alt="" /></div>
+    `;
+    document.head.appendChild(script3);
+
+//------------
     this.get_items()
   },
   methods:{
